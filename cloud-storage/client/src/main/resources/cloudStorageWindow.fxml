@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="776.0" prefWidth="1127.0" style="-fx-background-color: #170B3B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cloud.storage.client.CloudStorageWindowController">
+   <children>
+      <AnchorPane layoutY="76.0" prefHeight="703.0" prefWidth="1127.0" style="-fx-background-color: A9BCF5;">
+         <children>
+            <TableView layoutX="22.0" prefHeight="587.0" prefWidth="542.0">
+              <columns>
+                <TableColumn prefWidth="262.0" text="C1" />
+                <TableColumn prefWidth="119.0" text="C2" />
+              </columns>
+            </TableView>
+            <TableView layoutX="574.0" prefHeight="587.0" prefWidth="534.0">
+              <columns>
+                <TableColumn prefWidth="287.0" text="C1" />
+                <TableColumn prefWidth="106.0" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
