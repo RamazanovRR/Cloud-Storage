@@ -15,7 +15,7 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <Button fx:id="login" layoutX="265.0" layoutY="263.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="170.0" style="-fx-background-color: #7b6e4c; -fx-border-radius: 10;" text="Войти">
+            <Button fx:id="login" layoutX="265.0" layoutY="263.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="170.0" style="-fx-background-color: #7b6e4c; -fx-border-radius: 10;" text="Войти" onAction="#loginIn">
                <font>
                   <Font name="Forte" size="20.0" />
                </font>
