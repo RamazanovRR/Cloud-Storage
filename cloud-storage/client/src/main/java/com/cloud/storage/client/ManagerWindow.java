@@ -32,6 +32,7 @@ public class ManagerWindow {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Регистрация");
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.show();
     }
 
@@ -44,18 +45,20 @@ public class ManagerWindow {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Авторизация");
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.show();
     }
 
     void openCloudStorageWindow(Button button, String loginName) throws IOException {
         Stage stage = (Stage) button.getScene().getWindow();
         stage.close();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/cloudStorage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/cloudStorageWindow.fxml"));
         Parent root = loader.load();
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("RRR-Box: " + loginName);
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.show();
     }
 }
