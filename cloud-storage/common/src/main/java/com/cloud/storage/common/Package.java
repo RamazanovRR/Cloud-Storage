@@ -34,6 +34,8 @@ public abstract class Package implements Serializable {
         return chekSum;
     }
 
+    public Package(){}
+
     public Package(String typeMsg) {
         this.typeMsg = typeMsg;
     }

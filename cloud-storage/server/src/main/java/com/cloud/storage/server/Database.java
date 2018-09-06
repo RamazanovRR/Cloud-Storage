@@ -8,7 +8,7 @@ public class Database {
     private static PreparedStatement ps;
 
 
-    void connect() {
+     void connect() {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:CloudStorageUsers.db");
@@ -85,12 +85,12 @@ public class Database {
         return false;
     }
 
-    boolean authInDatabase(String[] authUser) throws SQLException {
-        boolean count;
-        ResultSet resultSet = connection.createStatement().executeQuery("SELECT `password` FROM `Users` WHERE `login_name` = '" + authUser[0] +"';");
-        count = resultSet.next();
-        if(count) {
-            return resultSet.getString("password").equals(authUser[1]);
-        } else return count;
+    boolean authInDatabase(String login, String pass) throws SQLException {
+        boolean auth;
+        ResultSet resultSet = connection.createStatement().executeQuery("SELECT `password` FROM `Users` WHERE `login_name` = '" + login +"';");
+        auth = resultSet.next();
+        if(auth) {
+            return resultSet.getString("password").equals(pass);
+        } else return auth;
     }
 }

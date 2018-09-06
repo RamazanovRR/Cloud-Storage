@@ -1,5 +1,6 @@
 package com.cloud.storage.server;
 
+import com.cloud.storage.common.ServerConst;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -10,11 +11,12 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 
-public class CloudServer {
+public class CloudServer implements ServerConst {
 
     private int port;
-    private static final int MAX_OBJ_SIZE = 1024 * 1024 * 100; // 10 mb
+    private static final int MAX_OBJ_SIZE = 1024 * 1024 * 100; // 100 mb
 
 
     public CloudServer(int port) {this.port = port;}
@@ -29,8 +31,8 @@ public class CloudServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new ObjectDecoder(MAX_OBJ_SIZE, ClassResolvers.cacheDisabled(null)),
-                                    new PackageHandler());
+                            ch.pipeline().addLast(new ObjectEncoder(),new ObjectDecoder(MAX_OBJ_SIZE, ClassResolvers.cacheDisabled(null)),
+                                    new AuthHendler());
                         }
                     })
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
@@ -43,6 +45,6 @@ public class CloudServer {
     }
 
     public static void main(String[] args) throws Exception {
-        new CloudServer(8189).run();
+        new CloudServer(PORT).run();
     }
 }
