@@ -1,6 +1,6 @@
 package com.cloud.storage.server;
 
-import com.cloud.storage.common.Const;
+import com.cloud.storage.common.ServerConst;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -13,7 +13,7 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 
-public class CloudServer implements Const {
+public class CloudServer implements ServerConst {
 
     private int port;
     private static final int MAX_OBJ_SIZE = 1024 * 1024 * 100; // 100 mb
@@ -45,6 +45,6 @@ public class CloudServer implements Const {
     }
 
     public static void main(String[] args) throws Exception {
-        new CloudServer(Const.PORT).run();
+        new CloudServer(PORT).run();
     }
 }
