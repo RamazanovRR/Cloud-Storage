@@ -71,7 +71,7 @@
             <items>
                   <MenuItem fx:id="refresh" mnemonicParsing="false" text="Обновить" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem fx:id="exit" mnemonicParsing="false" text="Выход из учетной записи" onAction="#exitAnAccount" />
+              <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitAnAccount" text="Выход из учетной записи" />
             </items>
           </Menu>
           <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">

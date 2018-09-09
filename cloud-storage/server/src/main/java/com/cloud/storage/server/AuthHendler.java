@@ -1,6 +1,7 @@
 package com.cloud.storage.server;
 
 import com.cloud.storage.common.AuthPackage;
+import com.cloud.storage.common.Const;
 import com.cloud.storage.common.Encryption;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -21,7 +22,7 @@ public class AuthHendler extends ChannelInboundHandlerAdapter {
         AuthPackage aPac = (AuthPackage) msg;
         Database db = new Database();
         db.connect();
-        boolean auth = db.authInDatabase(aPac.getLogin(), Encryption.decode(aPac.getPass(), "крафт"));
+        boolean auth = db.authInDatabase(aPac.getLogin(), Encryption.decode(aPac.getPass(), Const.KEY));
         aPac.setAuth(auth);
         db.disconnect();
         ctx.write(aPac);
