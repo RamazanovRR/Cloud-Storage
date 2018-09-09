@@ -70,6 +70,6 @@ public class CloudStorageWindowController {
 
     public void exitAnAccount() throws Exception {
         ClientConnection.getInstance().disconnect();
-        ManagerWindow.getInstance().openAuthWindow(renameOnLocal);
+        ManagerWindow.getInstance().openAuthWindow(renameOnLocal); //разобраться как передать непосредственно stage
     }
 }

@@ -1,6 +1,6 @@
 package com.cloud.storage.client;
 
-import com.cloud.storage.common.ServerConst;
+import com.cloud.storage.common.Const;
 import io.netty.handler.codec.serialization.ObjectDecoderInputStream;
 import io.netty.handler.codec.serialization.ObjectEncoderOutputStream;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 
-public class ClientConnection implements ServerConst {
+public class ClientConnection implements Const {
     private static ClientConnection instance;
     private static Socket socket;
     private static DataOutputStream dataOS;
@@ -30,7 +30,7 @@ public class ClientConnection implements ServerConst {
 
     public void connection() {
         try {
-            socket = new Socket(HOST,PORT);
+            socket = new Socket(Const.HOST,Const.PORT);
             dataOS = new DataOutputStream(socket.getOutputStream());
             dataIN = new DataInputStream(socket.getInputStream());
             oeos = new ObjectEncoderOutputStream(socket.getOutputStream());

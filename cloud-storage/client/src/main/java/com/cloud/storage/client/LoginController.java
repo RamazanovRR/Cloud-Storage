@@ -3,6 +3,7 @@ package com.cloud.storage.client;
 import animationObject.Shiver;
 import com.cloud.storage.common.AuthPackage;
 import com.cloud.storage.common.Encryption;
+import com.cloud.storage.common.Const;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -37,7 +38,7 @@ public class LoginController {
             textFieldLogin.setText("");
             textFieldPassword.setText("");
 
-            auth = new AuthPackage(fieldLogin, Encryption.encode(fieldPass, "крафт"));
+            auth = new AuthPackage(fieldLogin, Encryption.encode(fieldPass, Const.KEY));
             ClientConnection.getInstance().connection();
             Object obj = ClientConnection.getInstance().sendPackage(auth);
             if(obj == null) System.out.println("Объект auth от сервера равен null");
