@@ -34,7 +34,7 @@ public class LoginController {
         String fieldPass = textFieldPassword.getText().trim();
         AuthPackage auth;
 
-        if(!fieldLogin.equals("") && !fieldPass.equals("")) {
+        if(!fieldLogin.equals("") & !fieldPass.equals("")) {
             textFieldLogin.setText("");
             textFieldPassword.setText("");
 
@@ -50,19 +50,13 @@ public class LoginController {
                     e.printStackTrace();
                 }
             } else {
-                // реализовать в методе
                 Shiver fieldLog = new Shiver(textFieldLogin);
                 Shiver fieldPas = new Shiver(textFieldPassword);
-                fieldLog.startAnimation();
-                fieldPas.startAnimation();
             }
 
-            // метод авторизации пользователя.
         } else {
             Shiver fieldLog = new Shiver(textFieldLogin);
             Shiver fieldPas = new Shiver(textFieldPassword);
-            fieldLog.startAnimation();
-            fieldPas.startAnimation();
         }
     }
 }

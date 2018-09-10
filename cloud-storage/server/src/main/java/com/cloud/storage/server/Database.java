@@ -82,7 +82,7 @@ public class Database {
                 e.printStackTrace();
             }
         } else System.out.println("Ошибка записи данных");
-        return false;
+        return true;
     }
 
     boolean authInDatabase(String login, String pass) throws SQLException {

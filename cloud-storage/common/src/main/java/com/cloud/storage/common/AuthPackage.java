@@ -2,7 +2,7 @@ package com.cloud.storage.common;
 
 import java.io.Serializable;
 
-public class AuthPackage extends Package implements Serializable {
+public class AuthPackage implements Serializable {
     private String login;
     private byte[] pass;
     private boolean auth = false;

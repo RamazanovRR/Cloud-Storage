@@ -1,15 +1,15 @@
 package com.cloud.storage.client;
 
+import animationObject.Shiver;
+import com.cloud.storage.common.Const;
+import com.cloud.storage.common.Encryption;
+import com.cloud.storage.common.RegistrationPackage;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 public class CheckInController {
 
@@ -35,6 +35,9 @@ public class CheckInController {
     private Button registration;
 
     @FXML
+    private Group groupRadio;
+
+    @FXML
     private Button back;
 
     @FXML
@@ -51,5 +54,50 @@ public class CheckInController {
 
     public void openAuthWindow() throws IOException {
         ManagerWindow.getInstance().openAuthWindow(back);
+    }
+
+    public void registerUser() {
+        String fieldName = name.getText().trim();
+        String fieldSurename = surename.getText().trim();
+        String fieldLoginName = loginName.getText().trim();
+        String fieldEmail = email.getText().trim();
+        String fieldCity = city.getText().trim();
+        String fieldGender = "";
+        String fieldPass = password.getText().trim();
+        String fieldRepeatPass = repeatPassword.getText().trim();
+        RegistrationPackage regPack;
+
+        if(male.isSelected()) fieldGender = "Муж";
+        else fieldGender = "Жен";
+
+        if(!fieldName.equals("") & !fieldSurename.equals("") & !fieldLoginName.equals("") & !fieldEmail.equals("")
+                & !fieldCity.equals("") & !fieldPass.equals("")
+                & !fieldRepeatPass.equals("") & (fieldPass.equals(fieldRepeatPass))) {
+            // Registration
+            regPack = new RegistrationPackage(fieldName,fieldSurename,fieldLoginName,fieldEmail,fieldCity,fieldGender,
+                    Encryption.encode(fieldPass, Const.KEY));
+            ClientConnection.getInstance().connection();
+            Object obj = ClientConnection.getInstance().sendPackage(regPack);
+            if(obj == null) System.out.println("Объект auth от сервера равен null");
+            regPack = (RegistrationPackage) obj;
+            if(regPack.isAuth()) {
+                try {
+                    ManagerWindow.getInstance().openCloudStorageWindow(registration, fieldLoginName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                shiverAllElement();
+            }
+        } else {
+            shiverAllElement();
+        }
+    }
+
+    public void shiverAllElement() {
+        Node[] sArr = {name,surename, loginName, email, city, password, repeatPassword };
+        for (int i = 0; i < sArr.length; i++) {
+            Shiver a = new Shiver(sArr[i]);
+        }
     }
 }

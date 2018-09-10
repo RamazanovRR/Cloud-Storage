@@ -1,6 +1,7 @@
 package com.cloud.storage.common;
 
-public interface ServerConst {
+public interface Const {
     int PORT = 8188;
     String HOST = "localhost";
+    String KEY = "крафт";
 }
