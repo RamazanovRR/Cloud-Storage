@@ -95,9 +95,6 @@ public class CheckInController {
     }
 
     public void shiverAllElement() {
-        Node[] sArr = {name,surename, loginName, email, city, password, repeatPassword };
-        for (int i = 0; i < sArr.length; i++) {
-            Shiver a = new Shiver(sArr[i]);
-        }
+            Shiver allNode = new Shiver(name,surename, loginName, email, city, password, repeatPassword);
     }
 }

@@ -16,7 +16,7 @@ public class Shiver {
         startAnimation();
     }
 
-    public Shiver (Node[] node) {
+    public Shiver (Node... node) {
         for (int i = 0; i < node.length; i++) {
             transition = new TranslateTransition(Duration.millis(70), node[i]);
             transition.setFromX(0f);
