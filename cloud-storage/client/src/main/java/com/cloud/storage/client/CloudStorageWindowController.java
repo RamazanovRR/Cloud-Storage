@@ -66,6 +66,7 @@ public class CloudStorageWindowController {
 
     @FXML
     void initialize() {
+
     }
 
     public void exitAnAccount() throws Exception {

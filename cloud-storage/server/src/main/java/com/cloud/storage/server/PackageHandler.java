@@ -1,6 +1,7 @@
 package com.cloud.storage.server;
 
 import com.cloud.storage.common.DataPackage;
+import com.cloud.storage.common.WriteData;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.buffer.PooledByteBufAllocator;
@@ -25,16 +26,15 @@ public class PackageHandler extends ChannelInboundHandlerAdapter {
                 return;
             System.out.println(msg.getClass());
             if (msg instanceof DataPackage) {
-                System.out.println("Client text message: " + ((DataPackage) msg).getTypeMsg());
-                System.out.println("Client text message: " + ((DataPackage) msg).getTitle());
+                System.out.println("Получен пакет данных");
             } else {
                 System.out.printf("Server received wrong object!");
                 return;
             }
             DataPackage dataPackage = (DataPackage) msg;
-            if(dataPackage.getChekSum().equals(dataPackage.checkSum(dataPackage.getBytesData()))) {
-                FileOutputStream fout = new FileOutputStream(dataPackage.getTitle());
-                fout.write(dataPackage.getBytesData());
+            if(dataPackage.getCheckSumData().equals(WriteData.checkSum(dataPackage.getData()))) {
+                FileOutputStream fout = new FileOutputStream(dataPackage.getFileName());
+                fout.write(dataPackage.getData());
                 str = "файл успешно записан в облачное хранилище";
             } else {
                 str = "Контрольная сумма не совпадает, файл испорчен";

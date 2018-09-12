@@ -58,11 +58,11 @@ public class CheckInController {
 
     public void registerUser() {
         String fieldName = name.getText().trim();
-        String fieldSurename = surename.getText().trim();
+        String fieldSureName = surename.getText().trim();
         String fieldLoginName = loginName.getText().trim();
         String fieldEmail = email.getText().trim();
         String fieldCity = city.getText().trim();
-        String fieldGender = "";
+        String fieldGender = null;
         String fieldPass = password.getText().trim();
         String fieldRepeatPass = repeatPassword.getText().trim();
         RegistrationPackage regPack;
@@ -70,17 +70,18 @@ public class CheckInController {
         if(male.isSelected()) fieldGender = "Муж";
         else fieldGender = "Жен";
 
-        if(!fieldName.equals("") & !fieldSurename.equals("") & !fieldLoginName.equals("") & !fieldEmail.equals("")
+        if(!fieldName.equals("") & !fieldSureName.equals("") & !fieldLoginName.equals("") & !fieldEmail.equals("")
                 & !fieldCity.equals("") & !fieldPass.equals("")
                 & !fieldRepeatPass.equals("") & (fieldPass.equals(fieldRepeatPass))) {
             // Registration
-            regPack = new RegistrationPackage(fieldName,fieldSurename,fieldLoginName,fieldEmail,fieldCity,fieldGender,
+            regPack = new RegistrationPackage(fieldName,fieldSureName,fieldLoginName,fieldEmail,fieldCity,fieldGender,
                     Encryption.encode(fieldPass, Const.KEY));
             ClientConnection.getInstance().connection();
             Object obj = ClientConnection.getInstance().sendPackage(regPack);
             if(obj == null) System.out.println("Объект auth от сервера равен null");
             regPack = (RegistrationPackage) obj;
             if(regPack.isAuth()) {
+                ClientConnection.getInstance().setLogin(fieldLoginName);
                 try {
                     ManagerWindow.getInstance().openCloudStorageWindow(registration, fieldLoginName);
                 } catch (IOException e) {
@@ -94,7 +95,7 @@ public class CheckInController {
         }
     }
 
-    public void shiverAllElement() {
+    private void shiverAllElement() {
             Shiver allNode = new Shiver(name,surename, loginName, email, city, password, repeatPassword);
     }
 }

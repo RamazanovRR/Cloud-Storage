@@ -17,6 +17,16 @@ public class ClientConnection implements Const {
     private static DataInputStream dataIN;
     private static ObjectEncoderOutputStream oeos;
     private static ObjectDecoderInputStream odis;
+    private String login;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     private ClientConnection() {
 
     }

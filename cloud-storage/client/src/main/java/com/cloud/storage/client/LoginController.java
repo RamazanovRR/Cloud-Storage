@@ -44,6 +44,7 @@ public class LoginController {
             if(obj == null) System.out.println("Объект auth от сервера равен null");
             auth = (AuthPackage) obj;
             if(auth.isAuth()) {
+                ClientConnection.getInstance().setLogin(fieldLogin);
                 try {
                     ManagerWindow.getInstance().openCloudStorageWindow(login, fieldLogin);
                 } catch (IOException e) {
