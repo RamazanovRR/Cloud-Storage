@@ -15,7 +15,7 @@ public class TestClient {
         try {
             Socket socket = new Socket("localhost", 8188);
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-            DataPackage dataPackage = new DataPackage("File");
+            DataPackage dataPackage = new DataPackage("File", ClientConnection.getInstance().getLogin());
             WriteData.Write("P1120372.jpg");
             ObjectEncoderOutputStream oeos = null;
             oeos = new ObjectEncoderOutputStream(socket.getOutputStream());

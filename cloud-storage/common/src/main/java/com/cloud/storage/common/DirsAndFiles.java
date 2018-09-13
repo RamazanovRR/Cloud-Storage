@@ -33,7 +33,7 @@ public class DirsAndFiles implements Const {
     }
 
     public static File[] returnServerList(String login) {
-        File[] files = null;
+        File[] files = new File[0];
         File directory = new File(serverPath + login);
         String[] tmp = directory.list();
         if(!(tmp.length == 0)) {
@@ -42,6 +42,7 @@ public class DirsAndFiles implements Const {
                 files[i] = new File(serverPath + login + "/" + tmp[i]);
             }
         }
+
         return files;
     }
 

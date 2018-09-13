@@ -6,4 +6,9 @@ public interface Const {
     String KEY = "крафт";
     String LOCAL = "local";
     String SERVER = "server";
+    String CREATE_DIRS = "createDirs";
+    String REFRESH_FILES = "refresh";
+    String SEND_FILE = "file";
+    String DELETE_FILE = "delete";
+
 }

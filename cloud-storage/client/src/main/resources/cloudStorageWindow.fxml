@@ -13,14 +13,14 @@
          <children>
             <TableView fx:id="tableVievLocal" layoutX="1.0" layoutY="30.0" prefHeight="587.0" prefWidth="563.0">
               <columns>
-                <TableColumn fx:id="localNameViev" prefWidth="262.0" text="Имя файла" />
-                <TableColumn fx:id="localSizeViev" prefWidth="119.0" text="Размер" />
+                <TableColumn fx:id="localNameViev" prefWidth="437.0" text="Имя файла" />
+                <TableColumn fx:id="localSizeViev" prefWidth="125.0" text="Размер" />
               </columns>
             </TableView>
             <TableView fx:id="tableVievServer" layoutX="564.0" layoutY="30.0" prefHeight="587.0" prefWidth="564.0">
               <columns>
-                <TableColumn fx:id="ServerNameViev" prefWidth="287.0" text="Имя файла" />
-                <TableColumn fx:id="ServerSizeViev" prefWidth="106.0" text="Размер" />
+                <TableColumn fx:id="serverNameViev" prefWidth="447.0" text="Имя файла" />
+                <TableColumn fx:id="serverSizeViev" prefWidth="116.0" text="Размер" />
               </columns>
             </TableView>
             <Label alignment="CENTER" layoutX="117.0" layoutY="-2.0" prefHeight="21.0" prefWidth="331.0" text="Локальное хранилище" textAlignment="CENTER">
@@ -71,7 +71,7 @@
             <items>
                   <MenuItem fx:id="refresh" mnemonicParsing="false" text="Обновить" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem fx:id="exit" mnemonicParsing="false" text="Выход из учетной записи" onAction="#exitAnAccount" />
+              <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitAnAccount" text="Выход из учетной записи" />
             </items>
           </Menu>
           <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">

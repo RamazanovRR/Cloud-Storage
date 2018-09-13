@@ -33,7 +33,7 @@ public class CloudServer implements Const {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new ObjectEncoder(),new ObjectDecoder(MAX_OBJ_SIZE, ClassResolvers.cacheDisabled(null)),
-                                    new AuthHendler(), new RegistrationHandler());
+                                    new AuthHendler(), new RegistrationHandler(), new PackageHandler());
                         }
                     })
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
