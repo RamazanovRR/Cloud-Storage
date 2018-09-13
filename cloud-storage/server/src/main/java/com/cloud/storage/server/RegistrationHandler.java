@@ -16,6 +16,7 @@ public class RegistrationHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if(msg == null ) return;
         if(!(msg instanceof RegistrationPackage)) {
+            ctx.fireChannelRead(msg);
             System.out.println("Server received wrong object!");
             //необходимо вернуть клиенту объект с ответом!!!
             return;
